@@ -179,26 +179,26 @@ const deleteRole = async (req, res) => {
 //@access private: Role Admin
 const getRoles = async (req, res) => {
   const ip = req.headers["x-forwarded-for"] || req.connection.remoteAddress;
-  const user = req.user;
+  //const user = req.user;
 
   try {
-    if (user.roleType == "super_admin") {
+    //if (user.roleType == "super_admin") {
       const roles = await Role.find({
         active: true,
       });
       logger.info(
-        `${ip}: API /api/v1/role/getall | User: ${user.name} | responnded with Success `
+        `${ip}: API /api/v1/role/getall | responnded with Success `
       );
       return await res.status(200).json({
         data: roles,
         message: "Roles retrived successfully",
       });
-    } else {
-      logger.error(
-        `${ip}: API /api/v1/role/getall | User: ${user.name} | responnded with User is not Autherized `
-      );
-      return res.status(401).send({ message: "User is not Autherized" });
-    }
+    //} else {
+    //  logger.error(
+    //    `${ip}: API /api/v1/role/getall | User: ${user.name} | responnded with User is not Autherized `
+    //  );
+    //  return res.status(401).send({ message: "User is not Autherized" });
+    //}
   } catch (error) {
     logger.error(
       `${ip}: API /api/v1/role/getall | User: ${user.name} | responnded with Error `
