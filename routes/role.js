@@ -44,7 +44,7 @@ router.put("/delete/:id", validateToken, deleteRole);
 //@desc Get all Roles
 //@route GET /api/v1/roles/getall
 //@access private: Role Admin
-router.get("/getall", validateToken, getRoles);
+router.get("/getall", getRoles);
 
 //@desc Get Role by id
 //@route GET /api/v1/roles/get/:id
